@@ -1,6 +1,9 @@
 import { notification } from "antd";
-import axios from "axios";
-const client = axios.create({});
+import axios, { AxiosResponse } from "axios";
+const api = 'http://121.4.49.147:9000'
+const client = axios.create({
+  // baseURL:  
+});
 interface HttpParams {
   url: string;
   token?: string;
@@ -50,19 +53,13 @@ client.interceptors.request.use(
 // 添加响应拦截器
 client.interceptors.response.use(
   function ({ config, ...response }) {
-    //**登录模块错误信息直接展示在页面 */
-    if (response.status === 200) {
-      notification.error({
-        message: "提示",
-        description: response.data.msg,
-      });
       return {
-        code: response.data.code,
-        data: response.data.data,
-        msg: response.data.msg,
-        isError: response.data.code != 200,
-      };
-    }
+        status: response.status,
+        statusText: '200',
+        headers:{},
+        config:{},
+        ...response.data
+      }
   },
   function (error) {
     // 对响应错误做点什么

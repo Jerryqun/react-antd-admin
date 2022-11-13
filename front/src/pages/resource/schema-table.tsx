@@ -1,19 +1,15 @@
 import { TableProps } from "react-core-form";
 import formSchema from "./schema-form";
-import { remove, getList } from "./services";
+import { getList,del } from "./services";
 
-export default (): TableProps => {
+export default (editRef): TableProps => {
   return {
     rowKey: "id",
-    title: "用户列表",
-    scroll: {
-      x: 800,
-      y: "calc(100vh - 466px)",
-    },
+    title: "应用列表",
     tools: [
       {
-        label: "添加用户",
-        modalFormProps: formSchema,
+        label: "添加应用",
+        modalFormProps: formSchema(editRef),
       },
     ],
     columns: [
@@ -66,6 +62,7 @@ export default (): TableProps => {
         code,
         data: { data, count },
       } = await getList(params);
+
       return {
         total: count,
         success: code === 200,
@@ -86,6 +83,7 @@ export default (): TableProps => {
               return formSchema({
                 onSearch: onRefresh,
                 initialValues: record,
+                editRef
               });
             },
           },
@@ -94,7 +92,7 @@ export default (): TableProps => {
             spin: true,
             disabled: record.system === 1,
             async onClick({ onSearch }) {
-              const { code } = await remove(record.id);
+              const { code } = await del(record.id);
               if (code === 200) {
                 onSearch();
               }

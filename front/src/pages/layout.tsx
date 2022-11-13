@@ -1,7 +1,9 @@
 import { Outlet, history } from "ice";
 import { useRef, useState } from "react";
+import { iconUrl } from '@/utils';
 import customMenuDate from "./customMenu";
 import { PageContainer, ProLayout } from "@ant-design/pro-layout";
+
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
@@ -19,9 +21,10 @@ export default (props) => {
   }>();
 
   return (
-    <>
+    <div className="layout">
       <ProLayout
         actionRef={actionRef}
+        iconfontUrl={iconUrl}
         menu={{
           request: async () => {
             await waitTime(2000);
@@ -46,6 +49,6 @@ export default (props) => {
           <Outlet />
         </PageContainer>
       </ProLayout>
-    </>
+    </div>
   );
 };

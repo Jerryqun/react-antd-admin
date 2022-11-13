@@ -1,10 +1,7 @@
 export default [
   {
-    path: "/welcome",
-    name: "欢迎",
-  },
-  {
-    path: "/user",
-    name: "例子",
+    path: "/resource",
+    name: "资源部署",
+    icon: 'icon-xiangmu_xiangmuguanli'
   },
 ];
