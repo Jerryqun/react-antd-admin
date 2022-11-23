@@ -2,6 +2,19 @@
 const Base = require("./base.js");
 
 module.exports = class extends Base {
+  async getHtmlAction() {
+    const { path_name } = this.get();
+    const exit = await this.model("app_resource")
+      .where({
+        path_name,
+      })
+      .find();
+    this.json({
+      code: 200,
+      data:exit,
+      mes: "操作成功",
+    });
+  }
   async listAction() {
     const data = await this.commonList("app_resource", ["app_name"]);
     this.json({
