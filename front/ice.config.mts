@@ -1,18 +1,19 @@
 import { defineConfig } from "@ice/app";
 import antd from "@ice/plugin-antd";
+import MonacoWebpackPlugin from "monaco-editor-webpack-plugin";
 
 export default defineConfig({
   ssr: false,
   ssg: false,
-  proxy:{
-    "/proxy": {
-      "enable": true,
-      "target": "http://121.4.49.147:9001/",
-      "pathRewrite": {
-        "^/proxy": ""
-      }
-    },
-  },
+  // proxy: {
+  //   "/proxy": {
+  //     enable: true,
+  //     target: "http://localhost:9001/",
+  //     pathRewrite: {
+  //       "^/proxy": "",
+  //     },
+  //   },
+  // },
   plugins: [
     antd({
       importStyle: true,
@@ -21,4 +22,17 @@ export default defineConfig({
       },
     }),
   ],
+  webpack: (webpackConfig, ctx) => {
+    if (process.env.NODE_ENV !== "test") {
+      // 添加 webpack 插件
+      webpackConfig.plugins?.push(
+        new MonacoWebpackPlugin({
+          languages: ["javascript", "typescript", "html", "json"],
+        })
+      );
+    }
+    return webpackConfig;
+  },
+  dropLogLevel: "log",
+  publicPath: "./",
 });

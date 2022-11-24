@@ -1,12 +1,15 @@
-import { get } from "@/request";
+import { get, post } from "@/request";
 
 export const getList = (data) => {
-  return get("/proxy/resource/list", data);
+  return get("/resource/list", {
+    params: data,
+  });
 };
 export const add = (data) => {
-  return get("/proxy/resource/list", data);
+  return post("/resource/add", data);
 };
 export const del = (data) => {
-  return get("/proxy/resource/list", data);
+  return get("/resource/del", {
+    params: data,
+  });
 };
-

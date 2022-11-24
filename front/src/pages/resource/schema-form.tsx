@@ -1,22 +1,21 @@
+import { DEFAULTHTML, STATICURL } from "@/utils";
 import { message } from "antd";
-import { ModalFormProps, SchemaProps } from "react-core-form";
-import  MonacoEditor  from '../../components/monaco-editor';
+import { DrawerFormProps, SchemaProps } from "react-core-form";
+import MonacoEditor from "../../components/monaco-editor";
 import { add } from "./services";
 
 export default ({
-  onSearch,
   editRef,
+  onSearch,
   initialValues = {
     id: undefined,
-    disabled: 0,
-    password: "123456",
+    html: DEFAULTHTML,
   },
-}): ModalFormProps => {
-
+}): DrawerFormProps => {
   return {
     title: initialValues.id ? "修改" : "新增",
-    width: 600,
-    modalProps: {
+    width: 700,
+    drawerProps: {
       bodyStyle: {
         height: 280,
         overflow: "auto",
@@ -25,10 +24,12 @@ export default ({
     async onSubmit(values) {
       const { code } = await add({
         ...values,
+        html: editRef.current.getValue(),
       });
       if (code === 200) {
         message.success("保存成功!");
         onSearch();
+        return Promise.resolve();
       } else {
         return Promise.reject();
       }
@@ -52,11 +53,14 @@ export default ({
         name: "path_name",
         label: "资源访问地址",
         required: true,
+        props: {
+          addonBefore: STATICURL,
+        },
       },
       {
-        type: ({  value }) => {
+        type: ({ value, form }) => {
           return (
-            <div style={{ height: 600, width: '100%' }}>
+            <div style={{ height: 600, width: "100%" }}>
               <MonacoEditor
                 id="app-static"
                 value={value}
@@ -72,9 +76,8 @@ export default ({
             </div>
           );
         },
-        name: 'html',
-        required: true,
-        label: '静态资源内容',
+        name: "html",
+        label: "静态资源内容",
       },
     ] as SchemaProps[],
   };

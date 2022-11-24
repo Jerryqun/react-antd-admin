@@ -1,8 +1,9 @@
-import { notification } from "antd";
+import { message, notification } from "antd";
 import axios, { AxiosResponse } from "axios";
-const api = 'http://121.4.49.147:9000'
+const baseURL = "http://1.15.184.206:9003";
 const client = axios.create({
-  // baseURL:  
+  baseURL,
+  withCredentials: false,
 });
 interface HttpParams {
   url: string;
@@ -53,13 +54,16 @@ client.interceptors.request.use(
 // 添加响应拦截器
 client.interceptors.response.use(
   function ({ config, ...response }) {
-      return {
-        status: response.status,
-        statusText: '200',
-        headers:{},
-        config:{},
-        ...response.data
-      }
+    if (response.data.code !== 200) {
+      message.error(response.data.msg);
+    }
+    return {
+      status: response.status,
+      statusText: "200",
+      headers: {},
+      config: {},
+      ...response.data,
+    };
   },
   function (error) {
     // 对响应错误做点什么
@@ -67,7 +71,11 @@ client.interceptors.response.use(
   }
 );
 
-export function http({ url, data = {}, method = "get" }: HttpParams): any {
+export function http({
+  url,
+  data = {},
+  method = "get",
+}: HttpParams): Promise<any> {
   return new Promise((resolve, reject) => {
     let params = {};
     if (data?.params) {
@@ -79,7 +87,6 @@ export function http({ url, data = {}, method = "get" }: HttpParams): any {
       url,
       data,
       params,
-      withCredentials: true,
     })
       .then((response) => {
         resolve(response);
