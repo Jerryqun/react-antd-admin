@@ -1,7 +1,14 @@
 /* eslint-disable quotes */
 /* eslint-disable no-return-await */
 module.exports = class extends think.Controller {
-  __before() {}
+  __before() {
+    this.header("Access-Control-Allow-Origin", '*');
+    this.header('Access-Control-Allow-Headers', 'Content-Type');
+    if(this.method === "OPTIONS"){
+      this.ctx.body = 200;
+      return false;
+    }
+  }
   getParams(params, likeKeys) {
     const where = {};
     Object.keys(params).forEach((key) => {
