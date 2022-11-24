@@ -1,60 +1,47 @@
 import { TableProps } from "react-core-form";
 import formSchema from "./schema-form";
-import { getList,del } from "./services";
+import { getList, del } from "./services";
+import { STATICURL } from "@/utils";
 
 export default (editRef): TableProps => {
   return {
     rowKey: "id",
-    title: "应用列表",
+    title: "资源列表",
+    scroll: { x: 1000 },
     tools: [
       {
         label: "添加应用",
-        modalFormProps: formSchema(editRef),
+        drawerFormProps: ({ onSearch }) => formSchema({ editRef, onSearch }),
       },
     ],
     columns: [
       {
-        title: "ID",
-        dataIndex: "id",
-        width: 80,
-      },
-      {
-        title: "用户名",
-        dataIndex: "name",
+        title: "资源名称",
+        dataIndex: "app_name",
         width: 120,
       },
       {
-        title: "状态",
-        dataIndex: "disabled",
-        width: 120,
-        render(v) {
-          return [
-            <span style={{ color: "#52c41a" }}>启用</span>,
-            <span style={{ color: "#ff4d4f" }}>禁用</span>,
-          ][v];
-        },
-      },
-      {
-        title: "创建人",
-        dataIndex: "createUser",
-        width: 100,
+        title: "资源访问地址",
+        dataIndex: "path_name",
+        width: 180,
+        copyable: true,
+        render: (text: string) => (
+          <a target="_blank" href={`${STATICURL}${text}`}>
+            {`${STATICURL}${text}`}
+          </a>
+        ),
       },
       {
         title: "创建时间",
-        dataIndex: "createTime",
-        width: 180,
-        dateFormat: "YYYY-MM-DD",
-      },
-      {
-        title: "修改人",
-        dataIndex: "updateUser",
-        width: 100,
+        dataIndex: "create_time",
+        width: 120,
+        dateFormat: "YYYY-MM-DD HH:mm:ss",
       },
       {
         title: "修改时间",
-        dataIndex: "updateTime",
-        width: 180,
-        dateFormat: "YYYY-MM-DD",
+        dataIndex: "update_time",
+        width: 120,
+        dateFormat: "YYYY-MM-DD HH:mm:ss",
       },
     ],
     request: async (params) => {
@@ -79,11 +66,11 @@ export default (editRef): TableProps => {
           {
             label: "修改",
             disabled: record.system === 1,
-            modalFormProps: ({ onRefresh }) => {
+            drawerFormProps: ({ onRefresh }) => {
               return formSchema({
                 onSearch: onRefresh,
                 initialValues: record,
-                editRef
+                editRef,
               });
             },
           },
@@ -92,7 +79,7 @@ export default (editRef): TableProps => {
             spin: true,
             disabled: record.system === 1,
             async onClick({ onSearch }) {
-              const { code } = await del(record.id);
+              const { code } = await del({ id: record.id });
               if (code === 200) {
                 onSearch();
               }
@@ -110,8 +97,8 @@ export default (editRef): TableProps => {
       schema: [
         {
           type: "Input",
-          name: "name",
-          label: "用户名",
+          name: "app_name",
+          label: "资源名称",
         },
       ],
     },
