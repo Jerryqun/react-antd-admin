@@ -1,6 +1,5 @@
 import { Outlet, history } from "ice";
 import { useRef, useState } from "react";
-import { iconUrl } from "@/utils";
 import customMenuDate from "./customMenu";
 import { PageContainer, ProLayout } from "@ant-design/pro-layout";
 import logo from "@/assets/codepen.png";
