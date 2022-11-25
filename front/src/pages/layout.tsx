@@ -26,7 +26,7 @@ export default (props) => {
         title="CQ DevOps Tool"
         logo={logo}
         actionRef={actionRef}
-        iconfontUrl={iconUrl}
+        iconfontUrl='https://img.alicdn.com/imgextra/i1/O1CN01PliDAM1qKyRSgmSyR_!!6000000005478-2-tps-200-200.png'
         menu={{
           request: async () => {
             return customMenuDate;
