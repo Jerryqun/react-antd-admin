@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkice_scaffold_simple=self.webpackChunkice_scaffold_simple||[]).push([[826],{68540:(e,s,c)=>{c.r(s),c.d(s,{default:()=>i});var l=c(35657),u=c(20388);function i(){return null===u.m8||void 0===u.m8||u.m8.push("/resource"),(0,l.tZ)("div",{children:"home"})}}}]);

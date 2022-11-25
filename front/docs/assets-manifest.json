@@ -1,0 +1,44 @@
+{
+  "publicPath": "./",
+  "entries": {
+    "main": [
+      "css/main.css",
+      "js/main.js"
+    ]
+  },
+  "pages": {
+    "layout": [
+      "css/layout.css",
+      "js/layout.js"
+    ],
+    "resource-schema-table": [
+      "css/resource-schema-table.css",
+      "js/resource-schema-table.js"
+    ],
+    "resource-schema-form": [
+      "css/resource-schema-form.css",
+      "js/resource-schema-form.js"
+    ],
+    "resource-services": [
+      "css/resource-services.css",
+      "js/resource-services.js"
+    ],
+    "resource-index": [
+      "css/resource-index.css",
+      "js/resource-index.js"
+    ],
+    "welcome-index": [
+      "js/welcome-index.js"
+    ],
+    "custommenu": [
+      "js/custommenu.js"
+    ],
+    "index": [
+      "js/index.js"
+    ]
+  },
+  "assets": {
+    "node_modules/_monaco-editor@0.34.1@monaco-editor/esm/vs/base/browser/ui/codicons/codicon/codicon.ttf": "e5e47fee",
+    "src/assets/codepen.png": "0fe60e9c"
+  }
+}

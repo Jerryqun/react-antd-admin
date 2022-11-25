@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkice_scaffold_simple=self.webpackChunkice_scaffold_simple||[]).push([[310],{17947:(e,c,s)=>{s.r(c),s.d(c,{default:()=>f});var l=s(35657);const f=function(){return(0,l.tZ)("div",{children:"Welcome"})}}}]);

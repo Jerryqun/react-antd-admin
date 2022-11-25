@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkice_scaffold_simple=self.webpackChunkice_scaffold_simple||[]).push([[371],{1471:(e,c,s)=>{s.r(c),s.d(c,{default:()=>a});const a=[{path:"/resource",name:"\u8d44\u6e90\u90e8\u7f72",icon:"icon-xiangmu_xiangmuguanli"}]}}]);
