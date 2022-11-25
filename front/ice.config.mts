@@ -36,4 +36,5 @@ export default defineConfig({
   dropLogLevel: "log",
   publicPath: "./",
   splitChunks: false,
+  outputDir:'docs',
 });
