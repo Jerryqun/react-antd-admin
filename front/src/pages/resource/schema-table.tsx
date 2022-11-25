@@ -24,7 +24,10 @@ export default (editRef): TableProps => {
         title: "资源访问地址",
         dataIndex: "path_name",
         width: 180,
-        copyable: true,
+        copyable: {
+          text: (v: any, record: any, index: any) =>
+            `${STATICURL}${record.path_name}`,
+        },
         render: (text: string) => (
           <a target="_blank" href={`${STATICURL}${text}`}>
             {`${STATICURL}${text}`}
