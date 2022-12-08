@@ -4,14 +4,6 @@ import { iconUrl } from "@/utils";
 import customMenuDate from "./customMenu";
 import { PageContainer, ProLayout } from "@ant-design/pro-layout";
 
-const waitTime = (time: number = 100) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, time);
-  });
-};
-
 export default (props) => {
   const [pathname, setPathname] = useState(history?.location.pathname);
 
@@ -23,7 +15,7 @@ export default (props) => {
     <div className="layout">
       <ProLayout
         title="CQ DevOps Tool"
-        logo={'https://img.alicdn.com/imgextra/i1/O1CN01PliDAM1qKyRSgmSyR_!!6000000005478-2-tps-200-200.png'}
+        logo='https://img.alicdn.com/imgextra/i1/O1CN01PliDAM1qKyRSgmSyR_!!6000000005478-2-tps-200-200.png'
         actionRef={actionRef}
         iconfontUrl={iconUrl}
         menu={{
