@@ -1,5 +1,6 @@
+import { getLocalStore, unsetLocalStore } from "./utils/index";
 import { message, notification } from "antd";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 const baseURL = "http://1.15.184.206:9003";
 const client = axios.create({
   baseURL,
@@ -41,6 +42,7 @@ client.interceptors.request.use(
     config.headers = {
       //请求头数据
       ...config.headers,
+      "jwt-token": getLocalStore("jwt-token"),
     };
     // 在发送请求之前做些什么
     return config;
@@ -57,11 +59,13 @@ client.interceptors.response.use(
     if (response.data.code !== 200) {
       message.error(response.data.msg);
     }
+    if (response.data.code === 40000) {
+      unsetLocalStore("jwt-token");
+      location.href = `${origin}/${location.pathname}#/login`;
+    }
     return {
+      data: {},
       status: response.status,
-      statusText: "200",
-      headers: {},
-      config: {},
       ...response.data,
     };
   },

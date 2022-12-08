@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "description": "使用 TypeScript，未使用任何 UI 库。",
   "dependencies": {
+    "@ant-design/icons": "^4.8.0",
+    "@ant-design/pro-components": "^2.3.41",
     "@ant-design/pro-layout": "^7.1.16",
     "@ice/runtime": "release",
     "antd": "^4.23.6",
@@ -15,6 +17,7 @@
   "devDependencies": {
     "@ice/app": "release",
     "@ice/plugin-antd": "^1.0.0-rc.1",
+    "@ice/plugin-store": "^1.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "less": "^4.1.3",

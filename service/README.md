@@ -20,3 +20,4 @@ Use pm2 to deploy app on production enviroment.
 ```
 pm2 startOrReload pm2.json
 ```
+pm2 start pm2.json

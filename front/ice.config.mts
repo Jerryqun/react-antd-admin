@@ -1,6 +1,7 @@
 import { defineConfig } from "@ice/app";
 import antd from "@ice/plugin-antd";
 import MonacoWebpackPlugin from "monaco-editor-webpack-plugin";
+import store from "@ice/plugin-store";
 
 export default defineConfig({
   ssr: false,
@@ -15,6 +16,7 @@ export default defineConfig({
   //   },
   // },
   plugins: [
+    store(),
     antd({
       importStyle: true,
       theme: {
@@ -36,5 +38,5 @@ export default defineConfig({
   dropLogLevel: "log",
   publicPath: "./",
   splitChunks: false,
-  outputDir:'docs',
+  outputDir: "docs",
 });
