@@ -2,7 +2,7 @@
   "name": "thinkjs-app",
   "description": "application created by thinkjs",
   "version": "1.0.0",
-  "author": "cq <wb-zcq621102@alibaba-inc.com>",
+  "author": "cq <932798303@qq.com>",
   "scripts": {
     "start": "node development.js",
     "test": "THINK_UNIT_TEST=1 nyc ava test/ && nyc report --reporter=html",
