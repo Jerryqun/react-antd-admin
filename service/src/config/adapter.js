@@ -41,7 +41,7 @@ exports.model = {
     port: '3306',
     database: 'db_cq',
     user: 'root',
-    password: 'Ll+12345',
+    password: 'Mysql@123',
     prefix: '',
     encoding: 'utf8'
   }
