@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, history } from "ice";
 import { useRef, useState } from "react";
-import { getJWTToken, iconUrl, unsetLocalStore } from "@/utils";
+import {  iconUrl, unsetLocalStore } from "@/utils";
 import customMenuDate from "./customMenu";
 import { PageContainer, ProLayout } from "@ant-design/pro-layout";
 import store from "@/store";
@@ -28,7 +28,7 @@ export default () => {
         avatarProps={{
           src: "https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg",
           size: "small",
-          title: "七妮妮",
+          title: "admin",
         }}
         actionsRender={(props) => {
           return [
