@@ -101,6 +101,9 @@ export default (): TableProps => {
           type: "Input",
           name: "app_name",
           label: "资源名称",
+          props:{
+            showCount:false
+          }
         },
       ],
     },

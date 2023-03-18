@@ -30,7 +30,6 @@ export default ({
       } else {
         return Promise.reject();
       }
-      return true;
     },
     initialValues,
     schema: [

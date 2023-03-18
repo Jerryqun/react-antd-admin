@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import tableSchema from "./schema-table";
 import { Table } from "react-core-form";
 
