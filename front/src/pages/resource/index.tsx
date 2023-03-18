@@ -4,8 +4,7 @@ import { Table } from "react-core-form";
 
 const Page = () => {
   useEffect(() => {}, []);
-  const editRef = useRef({});
-  return <Table {...tableSchema(editRef)} />;
+  return <Table {...tableSchema()} />;
 };
 
 export default Page;

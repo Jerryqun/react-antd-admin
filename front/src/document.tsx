@@ -16,11 +16,13 @@ export default function Document() {
         />
         <Meta />
         <Title />
-        <Links />
+        <Links/>
+        <link  href='https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.36.1/min/vs/editor/editor.main.min.css'/>
       </head>
       <body>
         <Main />
-        <Scripts />
+        <Scripts/>
+        <script  src='https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js'></script>
       </body>
     </html>
   );

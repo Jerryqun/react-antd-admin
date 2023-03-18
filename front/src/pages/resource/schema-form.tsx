@@ -1,11 +1,9 @@
 import { DEFAULTHTML, STATICURL } from "@/utils";
 import { message } from "antd";
 import { DrawerFormProps, SchemaProps } from "react-core-form";
-import MonacoEditor from "../../components/monaco-editor";
 import { add } from "./services";
 
 export default ({
-  editRef,
   onSearch,
   initialValues = {
     id: undefined,
@@ -24,7 +22,6 @@ export default ({
     async onSubmit(values) {
       const { code } = await add({
         ...values,
-        html: editRef.current.getValue(),
       });
       if (code === 200) {
         message.success("保存成功!");
@@ -58,26 +55,14 @@ export default ({
         },
       },
       {
-        type: ({ value, form }) => {
-          return (
-            <div style={{ height: 600, width: "100%" }}>
-              <MonacoEditor
-                id="app-static"
-                value={value}
-                editorMonacoRef={editRef}
-                language="html"
-                options={{
-                  tabSize: 2,
-                  minimap: {
-                    enabled: false,
-                  },
-                }}
-              />
-            </div>
-          );
+        type: 'CodeEditor',
+        label: '部署资源内容',
+        name: 'html',
+        props: {
+          style: { height: 400 },
+          language: 'html',
+          theme: 'vs-dark',
         },
-        name: "html",
-        label: "静态资源内容",
       },
     ] as SchemaProps[],
   };

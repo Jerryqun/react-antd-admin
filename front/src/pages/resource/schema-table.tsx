@@ -3,7 +3,7 @@ import formSchema from "./schema-form";
 import { getList, del } from "./services";
 import { STATICURL } from "@/utils";
 
-export default (editRef): TableProps => {
+export default (): TableProps => {
   return {
     rowKey: "id",
     title: "资源列表",
@@ -11,7 +11,7 @@ export default (editRef): TableProps => {
     tools: [
       {
         label: "添加应用",
-        drawerFormProps: ({ onSearch }) => formSchema({ editRef, onSearch }),
+        drawerFormProps: ({ onSearch }) => formSchema({ onSearch }),
       },
     ],
     columns: [
@@ -73,7 +73,6 @@ export default (editRef): TableProps => {
               return formSchema({
                 onSearch: onRefresh,
                 initialValues: record,
-                editRef,
               });
             },
           },
